@@ -87,9 +87,7 @@ class NativeCrashPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
   }
 
   private fun crash(message: String) {
-    Handler(Looper.getMainLooper()).postDelayed({
-      throw NativeCrashException(message)
-    }, 50)
+    throw RuntimeException(message)
   }
 
   override fun onAttachedToActivity(binding: ActivityPluginBinding) {
