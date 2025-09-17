@@ -35,6 +35,7 @@ class NativeCrashPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
 
   override fun onMethodCall(call: MethodCall, result: Result) {
     when (call.method) {
+      result.error('NATIVE_CRASH_RESULT_ERROR', 'Error caused by invoking result.error in Native Kotlin code', null);
       methodCrash -> {
         val message = call.argument<String?>("message")
           ?: "This is a crash caused by calling .crash() in Dart."
